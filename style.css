@@ -1,5 +1,6 @@
 body {
     text-align: center;
+    background-color: black;
 }
 
 button {
@@ -50,13 +51,15 @@ button {
 
     /* display를 none으로 하면 redering에 영향을 줘서 field사이즈에 변화가 생길 수 있다. */
     visibility: hidden;
+    user-select: none;
+    cursor: auto;
 }
 
 .game__score {
     text-align: center;
     width: 50px;
     height: 50px;
-    font-size: 46px;
+    font-size: 38px;
     background-color: darksalmon;
     border-radius: 50%;
     color:white;
@@ -65,6 +68,8 @@ button {
     
     /* display를 none으로 하면 redering에 영향을 줘서 field사이즈에 변화가 생길 수 있다. */
     visibility: hidden;
+    user-select: none;
+    cursor: auto;
 }
 
 .game__field {
@@ -103,6 +108,16 @@ button {
 .pop-up__message {
     display: block;
     font-size: 38px;
+}
+
+.carrot,
+.bug {
+    transition: transform 100ms ease-in;
+}
+
+.carrot:hover,
+.bug:hover {
+    transform: scale(1.1);
 }
 
 /* .game__button {
