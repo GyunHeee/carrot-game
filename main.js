@@ -29,12 +29,10 @@ gameBtn.addEventListener('click', () => {
     } else {
         startGame();
     }
-
-    // 한 번 더 눌렀을때 반대의 기능 수행
-    started = !started;
 });
 
 function startGame() {
+    started = true;
     initGame();
     showStopButton();
     showTimerAndScore();
@@ -42,20 +40,26 @@ function startGame() {
 }
 
 function stopGame() {
+    started = false;
     stopGameTimer();
     hideGameButton();
     showPopUpWithText('Replay?');
 }
 
+function finishGame(win) {
+    started = false;
+    hideGameButton();
+    showPopUpWithText(win ? 'YOU WON' : 'YOU LOST');
+}
 
 // 리프레쉬 버튼 눌렀을때 처리
 popUpRefresh.addEventListener('click', () => {
-    popUp.classList.add('pop-up--hide');
-
+    startGame();
+    hidePopUp();
 });
 
 function showStopButton() {
-    const icon = gameBtn.querySelector('.fa-play');
+    const icon = gameBtn.querySelector('.fa-solid');
     icon.classList.add('fa-stop');
     icon.classList.remove('fa-play');
 }
@@ -75,6 +79,7 @@ function startGameTimer() {
     timer = setInterval(() => {
         if (remainingTimeSec <= 0) {
             clearInterval(timer);
+            finishGame(CARROT_COUNT === score);
             return;
         }
         updateTimerText(--remainingTimeSec);
@@ -94,6 +99,11 @@ function updateTimerText(time) {
 function showPopUpWithText(text) {
     popUpText.innerText = text;
     popUp.classList.remove('pop-up--hide');
+}
+
+function hidePopUp() {
+    popUp.classList.add('pop-up--hide');
+    console.log('hide');
 }
 
 function initGame() {
@@ -149,12 +159,6 @@ function onFieldClick(event) {
         finishGame(false);
     }
 
-}
-
-function finishGame(win) {
-    started = false;
-    hideGameButton();
-    showPopUpWithText(win ? 'YOU WON' : 'YOU LOST');
 }
 
 function updateScoreBoard() {
