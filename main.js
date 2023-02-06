@@ -47,6 +47,13 @@ function stopGame() {
     showPopUpWithText('Replay?');
 }
 
+
+// 리프레쉬 버튼 눌렀을때 처리
+popUpRefresh.addEventListener('click', () => {
+    popUp.classList.add('pop-up--hide');
+
+});
+
 function showStopButton() {
     const icon = gameBtn.querySelector('.fa-play');
     icon.classList.add('fa-stop');
@@ -93,9 +100,8 @@ function initGame() {
     field.innerHTML = '';
     gameScore.innerText = CARROT_COUNT;
     // 벌레와 당근을 생성한 뒤 field에 추가해줌
-    console.log(fieldRect);
     addItem('carrot', CARROT_COUNT, 'img/carrot.png');
-    addItem('but', BUG_COUNT, 'img/bug.png');
+    addItem('bug', BUG_COUNT, 'img/bug.png');
 }
 
 function addItem(className, count, imgPath) {
@@ -119,4 +125,38 @@ function addItem(className, count, imgPath) {
 
 function randomNumber(min, max) {
     return Math.random() * (max - min) + min;
+}
+
+// 이벤트 위임
+field.addEventListener('click', (evnet) => onFieldClick(event));
+
+function onFieldClick(event) {
+    if (!started) {
+        return;
+    }
+    const target = event.target;
+    if (target.matches('.carrot')) {
+        // 당근 !
+        target.remove();
+        score++;
+        updateScoreBoard();
+        if (score === CARROT_COUNT) {
+            finishGame(true);
+        }
+    } else if (target.matches('.bug')) {
+        // 벌레 
+        stopGameTimer();
+        finishGame(false);
+    }
+
+}
+
+function finishGame(win) {
+    started = false;
+    hideGameButton();
+    showPopUpWithText(win ? 'YOU WON' : 'YOU LOST');
+}
+
+function updateScoreBoard() {
+    gameScore.innerText = CARROT_COUNT - score;
 }
