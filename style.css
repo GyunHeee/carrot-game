@@ -1,0 +1,131 @@
+body {
+    text-align: center;
+}
+
+button {
+    border: none;
+    outline: none;
+    cursor: pointer;
+}
+
+.game {
+    display: flex;
+    flex-direction: column;
+    background: url(/img/background.png);
+    width: 800px;
+    height: 500px;
+    background-size: cover;
+    background-position: center;
+    margin: auto;
+}
+
+.game__header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.game__button {
+    width: 60px;
+    height: 60px;
+    background-color: wheat;
+    border: 4px solid black;
+    font-size: 24px;
+    transition: transform 300ms ease-in;
+}
+
+.game__button:hover {
+    transform: scale(1.1);
+}
+
+.game__timer {
+    width: 100px;
+    background-color: white;
+    text-align: center;
+    border: 5px solid black;
+    font-size: 32px;
+    margin-top: 8px;
+    border-radius: 20px;
+
+    /* display를 none으로 하면 redering에 영향을 줘서 field사이즈에 변화가 생길 수 있다. */
+    visibility: hidden;
+}
+
+.game__score {
+    text-align: center;
+    width: 50px;
+    height: 50px;
+    font-size: 46px;
+    background-color: darksalmon;
+    border-radius: 50%;
+    color:white;
+    margin-top: 8px;
+    border: 3px solid black;
+    
+    /* display를 none으로 하면 redering에 영향을 줘서 field사이즈에 변화가 생길 수 있다. */
+    visibility: hidden;
+}
+
+.game__field {
+    width: 100%;
+    height: 100%;
+    margin-top: 40px;
+    position: relative;
+}
+
+.pop-up {
+    display: block;
+    width: 400px;
+    height: 140px;
+    padding: 20px;
+    background-color: #00000090;
+    color: white;
+    border-radius: 20px;
+    text-align: center;
+    margin: auto;
+    transform: translateY(-150%);
+}
+
+.pop-up--hide {
+    display: none;
+}
+
+.pop-up__refresh {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+    background-color: wheat;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.pop-up__message {
+    display: block;
+    font-size: 38px;
+}
+
+/* .game__button {
+    font-size: 20px;
+    margin-top: 15px;
+}
+
+.game__timer {
+    display: block;
+    font-size: 24px;
+    border: 5px;
+    margin-top: 15px;
+}
+
+.game__score {
+    display: block;
+    margin-top: 15px;
+    border: 3px;
+    border-color: black;
+    font-size: 18px
+    border-radius: 50%;
+    background-color: lightsalmon;
+} */
+
+/* 패딩, border, display direction col, 
+사이즈 지정, block, 이동할 때 translate 사용 */
