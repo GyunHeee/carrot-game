@@ -8,6 +8,7 @@
 4. 윗부분에 남은 시간이 나옵니다.
 5. 남은 시간 밑에 현재 남은 당근의 개수가 나옵니다. 
 6. stop버튼을 누르면 "Replay"라는 팝업과 함께 게임을 다시 할 지 선택하게 됩니다.
+
 ![ezgif com-video-to-gif (4)](https://user-images.githubusercontent.com/92011224/218050803-8a5f9c35-1e07-4958-a09b-ea2c4b7aea60.gif)
 ## 배운점
 * html, css 마크업
