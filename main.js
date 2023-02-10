@@ -3,6 +3,8 @@
 // 재생 버튼 누르면
 // 벌레 초기화 + 타이머 시작 + 당근의 개수가 표시
 
+// 모듈화 전
+
 const CARROT_SIZE = 80;
 const CARROT_COUNT = 5;
 const BUG_COUNT = 5;
