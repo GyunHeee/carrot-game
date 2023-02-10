@@ -12,7 +12,7 @@ button {
 .game {
     display: flex;
     flex-direction: column;
-    background: url(/img/background.png);
+    background-image: url(/img/background.png);
     width: 800px;
     height: 500px;
     background-size: cover;
